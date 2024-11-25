@@ -5,7 +5,8 @@ Projeto Integrador da faculdade Fatec Diadema que visa a ODS 12 da agenda 2030 d
 
 Motivação: Através da reutilização eficiente de livros usados esperamos diminuir o desperdício de recursos naturais no Brasil.
 
-Tecnologias utilizadas: HTML, CSS e JavaScript; FrameWork BootStrap; Figma para construção das páginas; Word para construção da documentação;
+Tecnologias utilizadas: HTML, CSS e JavaScript; FrameWork BootStrap; Figma para construção das páginas; Word para construção da documentação; Microsoft SQL Server para
+o Gerenciamento do Banco de Dados; Node.js para gerenciamento de Rotas do Site;
 
 Importante: Nem todas as telas são funcionais; Site feito por uma equipe inicialmente em construção de páginas web;
 
