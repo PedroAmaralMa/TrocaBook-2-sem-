@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/style.css"/>
+  <script src="js/fetch.js"></script>
+  <title>Criar novo anuncio | TrocaBook</title>
+</head>
+<body onload="inicializarAnuncio()">
+  <header>
+    <div class="wrapper">  
+        <table class="cabecalho"><tr>
+            <th id="cabecalhoelementos">
+            <a href="index.html"><img src="img/Design sem nome (7).svg"></a>
+            <input type="text" style="width: 50%; height: 35px; margin-left: 5px;" id="pesquisa" placeholder="Pesquisar">
+                <select id="inputCategoria" class="form-control" style="width: 200px; height:37px; margin-left: 5px;">
+                  <option selected>Categoria...</option>
+                  <option>Ação</option>
+                  <option>Romance</option>
+                  <option>Literatura</option>
+                  <option>Lógica de Programação</option>
+                  <option>Direito</option>
+                  <option>Suspense</option>
+                  <option>Ficção Científica</option>
+                </select>
+            <a href="login.html" id="loginbotao"><button type="submit" style="width: 150px; height:37px;">Fazer login</button></a>
+        </th></tr>
+        <tr>
+            <th>
+                <a class="cadbutton" href="cadastro.html" id="cadastrobotao">Cadastre-se</a> <!--botão provisório só pra levar pro cadastro-->
+            </th>
+        </tr>
+        </table>
+  </header>
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  <div class="paganunciar">
+    <div class="anuncio">
+    <h1>Crie o seu anuncio</h1>
+    <form id="formAnuncio" enctype="multipart/form-data" onsubmit="cadastrarLivro(event)">
+      <input type="text" style="width: 470px; height: 33px;" id="titulo" name="titulo" placeholder="Titulo do livro"><br>
+      <input type="text" style="width: 470px; height: 33px;" id="ano" name="ano" placeholder="Ano de publicação"><br>
+      <input type="text" style="width: 470px; height: 200px;" placeholder="Descreva o livro, estado de conservação e outros detalhes que queira incluir">
+      <p>Carregue as imagens do seu livro aqui:</p>
+      <input type="file" id="imagem" name="imagem" accept="image/*" style="width: 470px; height: 140px; border-style: dotted; padding-top: 10px;"><br>
+      <button type="submit">Anunciar</button>
+    </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="rodapenovo">
+        <img src="img/Design sem nome.svg">
+        <a href="sobrenos.html"><p>Conheça nosso incrível projeto <br>de incentivo a reutilização</p></a>
+        <a href=""><p>Central de ajuda</p></a>
+        <small>© 2024 Sistema Trocabook<br>Todos os direitos reservados</small>
+    </div>
+</footer> 
+  
+</body>
+<script>
+  async function cadastrarLivro(event) {
+    event.preventDefault(); 
+  
+    const form = document.getElementById('formAnuncio');
+    const formData = new FormData(form); 
+  
+    
+    if (!formData.get('titulo') || !formData.get('ano') || !formData.get('imagem')) {
+      alert('Todos os campos são obrigatórios!');
+      return;
+    }
+  
+    try {
+      const response = await fetch('/cadastrarLivro', {
+        method: 'POST',
+        body: formData,
+        credentials: 'include', 
+      });
+  
+      if (!response.ok) {
+        throw new Error('Erro ao cadastrar livro: ' + response.statusText);
+      }
+  
+      const data = await response.json();
+  
+      if (data.success) {
+        alert('Livro Anunciado com Sucesso!');
+        window.location.href = '/home'; 
+      } else {
+        alert('Erro ao cadastrar o livro. ' + (data.error || 'Tente novamente mais tarde.'));
+      }
+    } catch (error) {
+      console.error('Erro:', error);
+      alert('Erro ao cadastrar o livro. Verifique sua conexão e tente novamente.');
+    }
+  }
+</script>
+</html>
