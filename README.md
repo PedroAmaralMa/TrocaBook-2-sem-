@@ -10,6 +10,6 @@ o Gerenciamento do Banco de Dados; Node.js para gerenciamento de Rotas do Site;
 
 Importante: Nem todas as telas são funcionais; Site feito por uma equipe inicialmente em construção de páginas web;
 
-Equipe: Pedro Amaral Machado; Pedro Lucas de Faria Cardoso; Rafaela Lima Rodrigues; Vinicius Soares de Almeida; Wellington Barbosa da Silva;
+Equipe: Pedro Amaral Machado; Pedro Lucas de Faria Cardoso; Rafaela Lima Rodrigues; Vinicius Soares de Almeida; 
 
 Auxiliadores: Bruno Zolotareff dos Santos; Marco Antonio Tomé; Marcos Vasconcelos de Oliveira;
